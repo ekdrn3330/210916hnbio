@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+  <html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta property="og:image" content="/img/m-hnbio-favi.png">
+    
+
+    <link rel="shortcut icon" href="/img/footer-logo.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/css/all.css">
+    <title>detail</title>
+  </head>
+  <body>
+    <%- include('piece/nav.ejs') %>
+
+    <div class="container mb-5">
+
+      <div class="flex-be-ce">
+        <span><%= data.date %></span>
+        <h3><%- data.title %></h3>
+        <span>조회수 : <%= data.views %></span>
+      </div>
+      <hr>
+      <div class="posts-text" style="min-height:10vh;"><%- data.editordata %></div>
+      <div class="text-center">
+        <a href="/edit/<%= data.id %>" class="btn btn-primary mr-2">수정</a>
+        <button class="delete btn btn-danger" data-id="<%= data.id %>">삭제</button>
+      </div>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script>
+      $('.delete').click(function(e) {
+        var del_chk = confirm('정말로 삭제하시겠습니까?');
+        if(del_chk == true) {
+          $.ajax({
+            method : 'DELETE',
+            url : `/delete/${e.target.dataset.id}`
+          }).done((row)=>{
+            location.href="/list/1";
+          })
+        } else {
+          return false;
+        }
+      });
+    </script>
+    
+  </body>
+</html>

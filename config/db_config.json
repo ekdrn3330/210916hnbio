@@ -1,0 +1,9 @@
+{
+    "host": "211.47.75.102",
+    "port": "3306",
+    "user": "hnbiocd",
+    "password": "hnbioco1006",
+    "database": "dbhnbiocd",
+    "connectionLimit": 30,
+    "multipleStatements": true
+  }

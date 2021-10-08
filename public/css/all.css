@@ -1,0 +1,5 @@
+.detail_href {
+    cursor: pointer;
+    transition: all .3s;
+}
+.detail_href:hover {background:#eee;}

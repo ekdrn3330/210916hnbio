@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+  <html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="HNBIO">
+    <meta name="keywords" content="hnbio, 흥농바이오, 토양 개량제, 유기 비료, 사료 첨가제, 효소 농축액, 리무버, 수경재배용 양액">
+    <meta name="description" content="농업 기술의 선진화를 흥농바이오가 이끌어갑니다.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://hnbioco.com/">
+    <meta property="og:title" content="HNBIO">
+    <meta property="og:description" content="농업 기술의 선진화를 흥농바이오가 이끌어갑니다.">
+    <meta property="og:image" content="/img/m-hnbio-favi.png">
+    
+
+    <link rel="shortcut icon" href="/img/footer-logo.png">
+    <link rel="stylesheet" href="/style/all.css">
+    <link rel="stylesheet" href="/public/css/all.css">
+    <title>흥농바이오 | Notice</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script>
+        $(function() {
+            $('#header').load('/components/header.html');
+            $('#footer').load('/components/footer.html');
+        });
+    </script>
+  </head>
+  <body>
+    <div id="header"></div>
+        
+    <div id="sub-bnr" class="sub-bnr4">
+        <h1 class="sub-bnr-title">공지사항</h1>
+    </div><!--e:sub-bnr-->
+
+    <div id="notice-wrap">
+        <div class="notice-inner">
+
+            <table>
+                <tr>
+                    <th class="ex-th">번호</th>
+                    <th class="ex-th">제목</th>
+                    <th class="ex-th">조회수</th>
+                    <th class="ex-th">등록일</th>
+                </tr>
+                <%
+                for(var i = (page * page_num) - page_num; i < (page * page_num); i++) {
+                if(i > length){
+                    i++;
+                }else{
+                    var data = posts[i];
+                %>
+                <tr class="detail_href" onClick="detail_href(<%= data.id %>)">
+                    <td data-notice="공지" class="<%= page %>"><%= posts.length - i %></td>
+                    <td><%- data.title %></td>
+                    <td><%= data.views %></td>
+                    <td><%= data.date %></td>
+                </tr>
+                <%  }
+                }
+                %>
+            </table>
+
+            <div class="notice-btnBox">
+                <ul>
+                    <% if(page == 1){ %>
+                        <li><a style="background: #d1d1d1; border: 1px solid #d1d1d1;" class="n-btn n-left"><img src="/img/n-left-btn.png" alt=""></a></li>
+                    <% } else { %>
+                        <li><a class="n-btn n-left" href="/Notice/<%= page - 1 %>"><img src="/img/n-left-btn.png" alt=""></a></li>
+                    <% } %>
+                    <%
+                    for(var j = 0; j < posts.length / page_num; j++){
+                    %>
+                    <li class="page-item"><a href="/Notice/<%= j + 1 %>"><%= j + 1 %></a></li>
+                    <%
+                    }
+                    %>
+                    <% if(posts.length <= 10 || page == 10 || (posts.length / page_num) <= page){ %>
+                        <li ><a style="background: #d1d1d1; border: 1px solid #d1d1d1;" class="n-btn n-right"><img src="/img/n-right-btn.png" alt=""></a></li>
+                    <% } else { %>
+                        <li ><a class="n-btn n-right" href="/Notice/<%= page + 1 %>"><img src="/img/n-right-btn.png" alt=""></a></li>
+                    <% } %>
+                </ul>
+            </div><!--e:notice-btnBox-->
+
+        </div><!--e:notice-inner-->
+    </div><!--e:notice-wrap-->
+    
+    <div id="footer"></div>
+    
+    <script>
+
+      function detail_href(x) {
+        window.location.href = '/hnDetail/' + x;
+      };
+
+      $('.page-item').children('a').eq(<%= page - 1 %>).addClass('active');
+    //   $('.detail_href').children('td.1').eq(0).addClass('active').text('');
+
+    </script>
+  </body>
+</html>

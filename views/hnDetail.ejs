@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+  <html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="HNBIO">
+    <meta name="keywords" content="hnbio, 흥농바이오, 토양 개량제, 유기 비료, 사료 첨가제, 효소 농축액, 리무버, 수경재배용 양액">
+    <meta name="description" content="농업 기술의 선진화를 흥농바이오가 이끌어갑니다.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://hnbioco.com/">
+    <meta property="og:title" content="HNBIO">
+    <meta property="og:description" content="농업 기술의 선진화를 흥농바이오가 이끌어갑니다.">
+    <meta property="og:image" content="/img/m-hnbio-favi.png">
+    
+
+    <link rel="shortcut icon" href="/img/footer-logo.png">
+    <link rel="stylesheet" href="/style/all.css">
+    <link rel="stylesheet" href="/public/css/all.css">
+    <title>흥농바이오 | Detail</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script>
+        $(function() {
+            $('#header').load('/components/header.html');
+            $('#footer').load('/components/footer.html');
+        });
+    </script>
+  </head>
+  <body>
+    <div id="header"></div>
+
+    <div id="sub-bnr" class="sub-bnr4">
+        <h1 class="sub-bnr-title">공지사항</h1>
+    </div><!--e:sub-bnr-->
+
+    <div id="detail-wrap">
+
+        <div class="de-titleBox">
+            <span><%= data.date %></span>
+            <h3><%- data.title %></h3>
+            <span>조회수 : <%= data.views %></span>
+        </div>
+
+        <div class="de-contents"><%- data.editordata %></div>
+
+        <a href="/Notice/1" class="de-back">목록으로</a>
+
+    </div><!--e:detail-wrap-->
+
+    <div id="footer"></div>
+
+  </body>
+</html>
